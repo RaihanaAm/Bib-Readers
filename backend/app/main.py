@@ -3,27 +3,33 @@ Application FastAPI minimale avec deux endpoints:
 - /health : vérifie que l'API tourne
 - /db-ping : vérifie la connexion à la base (SELECT 1)
 """
+#pour lancer le projet: py -m uvicorn app.main:app --reload
+
 #fast API
+
 from fastapi import FastAPI, Depends,Request, Form
 from fastapi.responses import JSONResponse ,HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pathlib import Path
 
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_session
 
+
 app = FastAPI(title="BibReaders API", version="0.1.0")
 
 
-# Dossier static pour CSS, images
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Chemin vers le dossier frontend
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  
 
-# Dossier des templates
-templates = Jinja2Templates(directory="templates")
+# Monter le dossier static
+app.mount("/static", StaticFiles(directory=BASE_DIR / "frontend" / "static"), name="static")
 
-
+# Templates
+templates = Jinja2Templates(directory=BASE_DIR / "frontend" / "templates")
 
 #^^Page d'accueil
 @app.get("/", response_class=HTMLResponse)
