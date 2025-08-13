@@ -1,0 +1,39 @@
+.acceuil {
+    height: 83vh;
+    background-image: url(../images/bg2.jpg) !important;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+.login {
+    height: 85vh;
+    background-image: url(../images/bg.jpg) !important;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+
+.formLogin {
+    padding: 30px;
+    background-color: white;
+    border: 1px solid #5c7c4496 ;
+    border-radius: 15px;
+}
+
+button {
+    background-color: #5C7C44 !important;
+    border: none !important;
+    color: white !important;
+}
+
+.linkk {
+    text-align: end;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+label {
+    font-weight: 500;
+}

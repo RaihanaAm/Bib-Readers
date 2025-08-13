@@ -1,0 +1,40 @@
+<!-- templates/home.html -->
+{% extends "layout.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+
+
+<section class="login w-100 d-flex align-items-center  m-2 ">
+    <div class="w-100 d-flex align-items-center justify-content-center">
+ 
+        <form class="w-25 formLogin" method="POST" action="">
+            <div class="mb-3">
+                <label  class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control"  name="username" required>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Adresse e-mail</label>
+                <input type="email" class="form-control"  name="email" required>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Mot de passe</label>
+                <input type="password" class="form-control"  name="password" required>
+            </div>
+            <div class="mb-3">
+                <label  class="form-label"> Confirme Mot de passe</label>
+                <input type="password" class="form-control" name="confirm_password" required>
+            </div>
+
+            <button type="submit" class="btn w-100 ">Créer Votre Compte</button>
+             <div class="mb-3 form-check">
+                <a class="nav-link linkk" href="{{ request.url_for('login_get') }}">Connexion</a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+{% endblock %}

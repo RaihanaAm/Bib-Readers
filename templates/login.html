@@ -1,0 +1,31 @@
+
+<!-- templates/login.html -->
+{% extends "layout.html" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+
+
+   <section class="login w-100 d-flex align-items-center  m-2 ">
+        <div class="w-100 d-flex align-items-center justify-content-center">
+            <form class="w-25 formLogin" method="POST" action="">
+                <div class="mb-3">
+                    <label  class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control"  required>
+                    <div  class="form-text">We'll never share your username with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                
+                <button type="submit" class=" btn w-100  ">Connexion</button>
+                 <div class="mb-3 form-check">
+                  <a class="nav-link linkk" href="{{ request.url_for('register_get') }}">Crée Votre Compte</a>
+                </div>
+            </form>
+        </div>
+
+    </section>
+{% endblock %}
