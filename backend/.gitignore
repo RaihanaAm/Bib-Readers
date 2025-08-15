@@ -1,13 +1,8 @@
-.venv/
-backend/.venv/
-.env
+# Ignore Python cache & virtual env
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.env.*
-.DS_Store
-pytest_cache/
-.mypy_cache/
-.coverage
-htmlcov/
+.venv/
+.env
+
+# Ignore VS Code settings
+.vscode/
