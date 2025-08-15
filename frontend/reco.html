@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>BibReaders · Recommandations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="px-6 py-4 bg-white shadow">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold">📚 BibReaders</a>
+      <a href="/reco" class="text-sm hover:underline">Recommandations</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 space-y-6">
+    <section class="bg-white rounded-2xl shadow p-4 space-y-3">
+      <h1 class="text-lg font-semibold">Obtenir des suggestions par description</h1>
+      <textarea id="query" rows="4" class="w-full border rounded-xl p-3"
+        placeholder="Ex: un roman d’aventure en Afrique, contemporain, mystère..."></textarea>
+      <div class="flex gap-2">
+        <input id="topk" type="number" min="1" max="20" value="8"
+               class="w-24 border rounded-xl px-3 py-2" />
+        <button id="go" class="px-4 py-2 bg-slate-900 text-white rounded-xl">Suggérer</button>
+      </div>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-lg font-semibold">Résultats</h2>
+      <div id="results" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+    </section>
+  </main>
+
+  <script>
+    const API = (path) => `${location.origin}${path}`;
+    function cardRes(r){
+      return `<a class="block bg-white rounded-xl shadow p-3 hover:shadow-md transition" href="/detail?id=${r.book_id}">
+        <div class="font-semibold line-clamp-2">${r.title}</div>
+        <div class="text-xs text-slate-500">score: ${r.score.toFixed(3)}</div>
+      </a>`;
+    }
+
+    document.getElementById('go').addEventListener('click', async () => {
+      const text = document.getElementById('query').value.trim();
+      const top_k = parseInt(document.getElementById('topk').value || '8', 10);
+      if(!text){ return alert("Saisis une description"); }
+      const res = await fetch(API('/api/recommander-par-description'), {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ text, top_k })
+      });
+      const data = await res.json();
+      document.getElementById('results').innerHTML = data.map(cardRes).join('');
+    });
+  </script>
+</body>
+</html>
