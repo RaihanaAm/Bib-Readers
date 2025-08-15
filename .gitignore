@@ -1,13 +1,9 @@
-# Python
+.venv/
+backend/.venv/
+.env
+
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-.env
+pytest_cache/
 
-# Virtual envs
-.venv/
-backend/.venv/
-
-# VS Code
-.vscode/
