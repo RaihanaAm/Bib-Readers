@@ -92,3 +92,5 @@ if os.path.isdir(FRONT_DIR):
     @app.get("/reco")
     async def reco_ui():
         return FileResponse(os.path.join(FRONT_DIR, "reco.html"))
+
+
