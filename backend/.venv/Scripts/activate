@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Ilyass\BibReaders\backend\.venv"
+VIRTUAL_ENV=" C:\Users\ULTRAPC\Downloads\Dev_IA\challenges\sprint2\BibReaders\backend\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
